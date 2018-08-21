@@ -46,11 +46,11 @@ from silver.utils.international import currencies
 from silver.utils.payments import get_payment_url
 from silver.payment_processors.mixins import PaymentProcessorTypes
 
-from models import (Plan, MeteredFeature, Subscription, Customer, Provider,
+from .models import (Plan, MeteredFeature, Subscription, Customer, Provider,
                     MeteredFeatureUnitsLog, Invoice, DocumentEntry,
                     ProductCode, Proforma, BillingLog, BillingDocumentBase,
                     Transaction, PaymentMethod)
-from documents_generator import DocumentsGenerator
+from .documents_generator import DocumentsGenerator
 
 
 logger = logging.getLogger('silver')
@@ -68,7 +68,7 @@ metadata.allow_tags = True
 
 def tax(obj):
     return ("{} {:.2f}%".format(obj.sales_tax_name, obj.sales_tax_percent)
-            if obj.sales_tax_percent > 0 else '')
+            if obj.sales_tax_percent and obj.sales_tax_percent > 0 else '')
 tax.admin_order_field = 'sales_tax_percent'
 
 

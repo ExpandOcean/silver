@@ -71,3 +71,7 @@ class BaseBillingEntity(LiveModel):
     def __unicode__(self):
         return (u'%s (%s)' % (self.name, self.company) if self.company
                 else self.name)
+
+    def __str__(self):
+        return ('%s (%s)' % (self.name, self.company) if self.company
+                else self.name)

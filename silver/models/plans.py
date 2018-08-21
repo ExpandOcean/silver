@@ -129,6 +129,9 @@ class Plan(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
+    def __str__(self):
+        return self.name
+
     @property
     def provider_flow(self):
         return self.provider.flow
