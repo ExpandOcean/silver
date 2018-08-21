@@ -24,11 +24,6 @@ from silver.models import Subscription, BillingLog
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('--date',
-                    action='store',
-                    dest='date'),
-    )
 
     def handle(self, *args, **options):
         if options['date']:
